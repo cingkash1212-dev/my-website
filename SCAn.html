@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF_8">
+        <meta name="viewport"
+        content="width=device-width,
+        initial-scale=1.0">
+        <title>Transfer portal</title>
+        <link rel="stylesheet"
+        href="style.css">
+
+        <style>
+            body {
+                background:#f3f6fa;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .container {
+                width: 90%;
+                max-width: 400px;
+                margin: 40px auto;
+                padding: 20px;
+                background: white;
+                border-radius: 10px;
+                box-shadow:  0 0 10px
+                rgba(0,0,0,0,1);
+            }
+
+            h2 {
+                text-align: center;
+            }
+             
+            label {
+                display: block;
+                margin-top: 15px;
+            }
+            input, select {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            button {
+                margin-top: 20px;
+                width: 100%;
+                padding: 12px;
+                background: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            button:hover{
+                background: #005fcc;
+            }
+            #status  {
+                margin-top: 15px;
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <h2>Transfer to VISCOD 
+                account</h2>
+
+                <label>select Bank:</label>
+                <select id="Bank">
+                    <option value="">--choose 
+                        Bank--</option>
+                        <option value="access">Access Bank</option>
+                        <option value="gtb">GTBank</option>
+                        <option  value="zenith">zenith Bank</option>
+                        <option value="uba">UBA</option>
+                        <option value="OPAY">OPAY</option>
+                        <option value="firstbank">First Bank</option>
+                </select>
+
+                <label>Account Number:</label>
+                <input type="number"
+                id="accountnumber" placeholder="Enter 10-digit account number">
+
+                <label>amount (#):</label>
+                <input type="number" id="amount"
+                placeholder="Enter amount">
+
+                <label>Description;</label>
+                <input type="text"
+                id="description" placeholder="Reason for transfer">
+
+                <button
+                onclick="sendTransfer()">send Transfer</button>
+
+                     <p id="status"></p>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            function sendTransfer()  {
+                let bank =
+                document.getElementById("bank").value;
+                let account =
+                document.getElementById("accountNumber")
+                .value;
+                let amount = 
+                document.getElementById("amount").value;
+                let desc = 
+                document.getElementById("description").value;
+                let status =
+                document.getElementById("status");
+
+                if (!bank || !account ||!amount) {
+                    status.innerHTML= " please find all fields.";
+                    status.style.color = "red";
+                    return;
+                }
+                if(account.length== 10) {
+                    status.innerHTML ="account must be 10 digits.";
+                    status.style.color = "red";
+                    return;
+                }
+            }
+        </script>
+    </body>
+    
+</html>
